@@ -79,8 +79,8 @@ const SubscriptionManagement = () => {
               onClick={() => setSelectedPlan('all')}
               className={`px-6 py-4 font-medium text-sm border-b-2 transition-colors ${
                 selectedPlan === 'all'
-                  ? 'border-purple-500 text-purple-600 bg-purple-100'
-                  : 'border-transparent text-gray-500 hover:text-gray-700'
+                  ? 'border-purple-500 text-purple-600 bg-purple-50'
+                  : 'border-transparent text-gray-500 hover:text-purple-700'
               }`}
             >
               All Subscriptions ({institutes.length})
@@ -89,7 +89,7 @@ const SubscriptionManagement = () => {
               onClick={() => setSelectedPlan('basic')}
               className={`px-6 py-4 font-medium text-sm border-b-2 transition-colors ${
                 selectedPlan === 'basic'
-                  ? 'border-purple-500 text-purple-600 bg-purple-100'
+                  ? 'border-purple-500 text-purple-600 bg-purple-50'
                   : 'border-transparent text-gray-500 hover:text-purple-700'
               }`}
             >
@@ -99,7 +99,7 @@ const SubscriptionManagement = () => {
               onClick={() => setSelectedPlan('pro')}
               className={`px-6 py-4 font-medium text-sm border-b-2 transition-colors ${
                 selectedPlan === 'pro'
-                  ? 'border-yellow-500 text-yellow-600 bg-yellow-100'
+                  ? 'border-yellow-500 text-yellow-600 bg-yellow-50'
                   : 'border-transparent text-gray-500 hover:text-yellow-600'
               }`}
             >
