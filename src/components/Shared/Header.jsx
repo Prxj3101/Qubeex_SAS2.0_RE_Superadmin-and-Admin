@@ -15,7 +15,7 @@ const Header = ({ role }) => {
     <div className="w-full bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
       {/* Left Side - Logo + Name + Tagline */}
       <div className="flex items-center space-x-3">
-        <img src="/QubeExlogo.png" alt="QubeEx Logo" className="w-14 h-14" />
+        <img src="/QubeExlogo.png" alt="QubeEx Logo" className="w-12 h-12" />
         <div className="flex flex-col">
           <h1 className="text-3xl font-qube font-extrabold text-gray-700">
             QubeEx
