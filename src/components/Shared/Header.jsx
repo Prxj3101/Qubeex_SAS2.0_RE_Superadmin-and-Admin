@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { LogOut } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import React, { useState } from "react";
+import { LogOut } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
 
-const Header = ({ role }) => {
+const Header = ({ role, plan: propPlan }) => {
   const { logout } = useAuth();
   const [showModal, setShowModal] = useState(false);
+
+  // Agar role SuperAdmin h aur plan nahi pass hua → default PRO
+  const plan = role === "SuperAdmin" ? propPlan || "PRO" : propPlan;
 
   const handleConfirmLogout = () => {
     logout();
@@ -13,13 +16,40 @@ const Header = ({ role }) => {
 
   return (
     <div className="w-full bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
-      {/* Left Side - Logo + Name + Tagline */}
+      {/* Left Side - Logo + Name + Tagline + Plan Tag */}
       <div className="flex items-center space-x-3">
         <img src="/QubeExlogo.png" alt="QubeEx Logo" className="w-12 h-12" />
-        <div className="flex flex-col">
-          <h1 className="text-3xl font-qube font-extrabold text-gray-700">
+
+        <div className="flex flex-col relative">
+          <h1 className="text-3xl font-qube font-extrabold text-gray-700 flex items-center">
             QubeEx
+
+            {/* BASIC / PRO Tag */}
+            {plan && (
+              <div
+                className={`ml-1.5 -mt-4 rounded-full p-[3px] inline-flex ${
+                  plan === "PRO" && role === "SuperAdmin"
+                    ? "bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600"
+                    : "bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500"
+                }`}
+              >
+                <span
+                  className="block px-2 py-0.5 rounded-full text-xs font-semibold
+                             bg-gradient-to-r from-gray-700 via-gray-600 to-gray-800"
+                >
+                  {/* White Shiny Text */}
+                  <span
+                    className="bg-gradient-to-r from-white via-gray-200 to-white 
+                               bg-200 bg-clip-text text-transparent animate-shine-gradient"
+                  >
+                    {plan}
+                  </span>
+                </span>
+              </div>
+            )}
           </h1>
+
+          {/* Tagline */}
           <p
             className="text-lg font-medium mt-0
                        bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500
@@ -38,21 +68,17 @@ const Header = ({ role }) => {
                      bg-purple-100 shadow-lg flex items-center space-x-2"
         >
           <span>
-            {role === 'SuperAdmin' ? '👑' : role === 'Admin' ? '🏛️' : ''}
+            {role === "SuperAdmin" ? "👑" : role === "Admin" ? "🏛️" : ""}
           </span>
           <span
             className="bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500
                        bg-200 bg-clip-text text-transparent animate-shine-gradient"
           >
-            {role === 'SuperAdmin'
-              ? 'SuperAdmin'
-              : role === 'Admin'
-              ? 'Admin'
-              : role}
+            {role}
           </span>
         </span>
 
-        {/* Only Logout Icon */}
+        {/* Logout Icon */}
         <button
           onClick={() => setShowModal(true)}
           className="p-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors"
