@@ -39,7 +39,7 @@ const Header = ({ role, plan: propPlan }) => {
                 >
                   {/* White Shiny Text */}
                   <span
-                    className="bg-gradient-to-r from-white via-gray-200 to-white 
+                    className="bg-gradient-to-r from-white via-gray-300 to-white 
                                bg-200 bg-clip-text text-transparent animate-shine-gradient"
                   >
                     {plan}
